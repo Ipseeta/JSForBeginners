@@ -1,0 +1,43 @@
+<html>
+    <p>Declarations (variables and functions) being "moved" to the top of their respective scopes, which we call "hoisting"</p>
+    <p>Function declarations are hoisted before normal variables</p>
+<script>
+    foo(); // Uncaught TypeError: foo is not a function
+
+    var a = true;
+    if (a) {
+        function foo() {
+            console.log("a");
+        }
+    } else {
+        function foo() {
+            console.log("b");
+        }
+    }
+</script>
+
+<script>
+    function foo() {
+        var a;
+        console.log(a);
+        a = 2
+    }
+    foo(); // undefined
+</script>
+
+<script>
+    function foo() {
+        console.log(a);
+        a = 2
+    }
+    foo(); // undefined
+</script>
+
+<script>
+    function foo() {
+        console.log(b);
+    }
+    foo(); // Uncaught ReferenceError: b is not defined
+</script>
+
+</html>
